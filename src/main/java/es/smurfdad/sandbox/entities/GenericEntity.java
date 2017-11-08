@@ -1,11 +1,14 @@
 package es.smurfdad.sandbox.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +30,9 @@ public class GenericEntity implements Serializable, Cloneable {
     private String value4;
 
     private String value5;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChildEntity> children;
 
     public Long getId() {
         return this.id;
@@ -79,6 +85,14 @@ public class GenericEntity implements Serializable, Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    public List<ChildEntity> getChildren() {
+        return this.children;
+    }
+
+    public void setChildren(List<ChildEntity> children) {
+        this.children = children;
     }
 
 }
