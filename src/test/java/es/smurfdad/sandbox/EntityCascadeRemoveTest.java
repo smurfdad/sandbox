@@ -1,4 +1,4 @@
-package es.smurfdad.sandbox.entitypatcher;
+package es.smurfdad.sandbox;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
